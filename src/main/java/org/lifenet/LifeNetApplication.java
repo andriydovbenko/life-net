@@ -9,5 +9,4 @@ public class LifeNetApplication {
     public static void main(String[] args) {
         SpringApplication.run(LifeNetApplication.class, args);
     }
-
 }
