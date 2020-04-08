@@ -1,9 +1,6 @@
 import Vue from 'vue'
 import VueResource from 'vue-resource'
-import App from 'static/js/pages/App.vue'
-import { connect } from './util/ws'
-
-connect()
+import App from 'pages/Application.vue'
 
 Vue.use(VueResource)
 
