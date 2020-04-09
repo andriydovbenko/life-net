@@ -30,6 +30,11 @@ public class MainController {
     public String main(Model model, @AuthenticationPrincipal User user) {
         HashMap<Object, Object> data = new HashMap<>();
 
+        if (user != null) {
+            data.put("profile", user);
+            data.put("messages", messageRepository.findAll());
+        }
+
         data.put("profile", user);
         data.put("messages", messageRepository.findAll());
 

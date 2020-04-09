@@ -6,6 +6,8 @@ import org.lifenet.domain.View;
 import org.lifenet.repository.MessageRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -53,5 +55,11 @@ public class MessageController {
     @DeleteMapping("delete/{id}")
     public void deleteAll(@PathVariable("id") Message message) {
         messageRepo.deleteAll();
+    }
+
+    @MessageMapping("/changeMessage")
+    @SendTo("/topic/activity")
+    public Message change(Message message) {
+        return messageRepo.save(message);
     }
 }
